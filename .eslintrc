@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "eslint-config-airbnb-base",
+    "plugin:vue/recommended",
+    "plugin:vue-scoped-css/recommended",
+    "eslint-config-prettier"
+  ],
+  "parserOptions": {
+      "ecmaVersion": 11,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true
+      }
+  },
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "import/no-unresolved": "off",
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": 3,
+      "multiline": {
+        "max": 2,
+        "allowFirstLine": false
+      }
+    }],
+    "vue/component-tags-order": ["error", {
+      "order": ["script", "template", "style"]
+    }],
+    "vue/html-self-closing": "off",
+    "vue/singleline-html-element-content-newline": "off",
+  }
+}
