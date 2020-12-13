@@ -1,0 +1,32 @@
+/**************************/
+/********* COLORS *********/
+/**************************/
+
+$white: #ffffff;
+$black: #0f1012;
+$light: #f0f0f0;
+$dark: #2b3743;
+
+
+/******************************/
+/********* TYPOGRAPHY *********/
+/******************************/
+
+$base-font-size: 14px;
+
+$main-font: 'Roboto', sans-serif;
+
+%main-font {
+  font-family: $main-font;
+  font-weight: 400;
+}
+
+%main-font-medium {
+  font-family: $main-font;
+  font-weight: 500;
+}
+
+%main-font-black {
+  font-family: $main-font;
+  font-weight: 900;
+}

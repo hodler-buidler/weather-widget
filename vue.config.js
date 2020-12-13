@@ -16,5 +16,10 @@ module.exports = {
   },
   css: {
     extract: false,
+    loaderOptions: {
+      sass: {
+        prependData: `@import "@/design/_variables.scss";`,
+      },
+    },
   },
 };
