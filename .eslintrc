@@ -32,5 +32,6 @@
     }],
     "vue/html-self-closing": "off",
     "vue/singleline-html-element-content-newline": "off",
+    "vue-scoped-css/require-scoped": ["error", "always"]
   }
 }
