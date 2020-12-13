@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <div>Main View</div>
+  <div>{{ $t('settingsForm.labels.addLocation') }}</div>
 </template>
 
 <style lang="scss" scoped></style>
