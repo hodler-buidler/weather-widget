@@ -1,5 +1,4 @@
-const MainView = () =>
-  import(/* webpackChunkName: "main-view" */ '@/views/MainView.vue');
+import MainView from '@/views/MainView.vue';
 
 const routes = [
   {
