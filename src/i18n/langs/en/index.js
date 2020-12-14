@@ -12,6 +12,7 @@ const translations = {
   },
   errors: {
     dataNotLoadedForCity: `some error occurred, data couldn't be loaded for city`,
+    locationsNotInitiated: `locations data couldn't be obtained, please checkout network connection and reload the page.`,
   },
 };
 

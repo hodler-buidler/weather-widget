@@ -9,6 +9,10 @@ export default {
 
   props: ['lang', 'theme', 'instanceId'],
 
+  data: () => ({
+    isError: false,
+  }),
+
   async created() {
     this.setLocale(this.lang);
     this.$setStylingTheme(this.theme);
@@ -25,8 +29,7 @@ export default {
       try {
         await this.initLocationsAction({ instanceId: this.$instanceId });
       } catch (RequestError) {
-        /** @todo Set-up error handling */
-        console.log(RequestError);
+        this.isError = true;
       }
     },
   },
@@ -35,7 +38,13 @@ export default {
 
 <template>
   <div class="widget-wrap" :class="$stylingTheme">
-    <router-view />
+    <div v-if="isError">
+      {{
+        $t('errors.locationsNotInitiated')
+          | capitalize({ onlyFirstLetter: true })
+      }}
+    </div>
+    <router-view v-else />
   </div>
 </template>
 
