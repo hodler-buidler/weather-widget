@@ -1,36 +1,61 @@
 <script>
+import StatItemSkeleton from './StatItemSkeleton.vue';
+
 export default {
   name: 'WeatherDisplayStats',
+  components: { StatItemSkeleton },
+
+  props: {
+    isLoading: {
+      type: Boolean,
+      default: true,
+    },
+  },
 };
 </script>
 
 <template>
   <div class="stats-grid" :class="$stylingTheme">
     <div class="stat">
-      <span class="material-icons stat__label-icon">near_me</span>
-      <span>3.0m/s SSE</span>
+      <stat-item-skeleton v-if="isLoading" />
+      <template v-else>
+        <span class="material-icons stat__label-icon">near_me</span>
+        <span>3.0m/s SSE</span>
+      </template>
     </div>
     <div class="stat">
-      <span class="material-icons stat__label-icon">blur_circular</span>
-      <span>1021hPa</span>
+      <stat-item-skeleton v-if="isLoading" />
+      <template v-else>
+        <span class="material-icons stat__label-icon">blur_circular</span>
+        <span>1021hPa</span>
+      </template>
     </div>
     <div class="stat">
-      <span class="stat__label-text">
-        {{ $t('stats.humidity') | capitalize({ onlyFirstLetter: true }) }}:
-      </span>
-      <span>97%</span>
+      <stat-item-skeleton v-if="isLoading" />
+      <template v-else>
+        <span class="stat__label-text">
+          {{ $t('stats.humidity') | capitalize({ onlyFirstLetter: true }) }}:
+        </span>
+        <span>97%</span>
+      </template>
     </div>
     <div class="stat">
-      <span class="stat__label-text">
-        {{ $t('stats.dewPoint') | capitalize({ onlyFirstLetter: true }) }}:
-      </span>
-      <span>0&deg;C</span>
+      <stat-item-skeleton v-if="isLoading" />
+      <template v-else>
+        <span class="stat__label-text">
+          {{ $t('stats.dewPoint') | capitalize({ onlyFirstLetter: true }) }}:
+        </span>
+        <span>0&deg;C</span>
+      </template>
     </div>
     <div class="stat">
-      <span class="stat__label-text">
-        {{ $t('stats.visibility') | capitalize({ onlyFirstLetter: true }) }}:
-      </span>
-      <span>10.0km</span>
+      <stat-item-skeleton v-if="isLoading" />
+      <template v-else>
+        <span class="stat__label-text">
+          {{ $t('stats.visibility') | capitalize({ onlyFirstLetter: true }) }}:
+        </span>
+        <span>10.0km</span>
+      </template>
     </div>
   </div>
 </template>

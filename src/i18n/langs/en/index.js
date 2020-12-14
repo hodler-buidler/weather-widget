@@ -10,6 +10,9 @@ const translations = {
       addLocation: 'add location',
     },
   },
+  errors: {
+    dataNotLoadedForCity: `some error occurred, data couldn't be loaded for city`,
+  },
 };
 
 export default translations;

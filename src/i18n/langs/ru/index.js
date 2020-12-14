@@ -10,6 +10,9 @@ const translations = {
       addLocation: 'добавить место',
     },
   },
+  errors: {
+    dataNotLoadedForCity: `произошла какая-то ошибка, данные не могут быть загружены для города`,
+  },
 };
 
 export default translations;

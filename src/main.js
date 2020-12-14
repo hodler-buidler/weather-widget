@@ -14,13 +14,17 @@ import i18n from '@/i18n';
 
 import GeneralPlugin from '@/plugins/GeneralPlugin';
 
+import UiSkeletonLoader from '@/components/ui/UiSkeletonLoader.vue';
+
+Vue.config.productionTip = false;
+
 Vue.use(VueCustomElement);
 Vue.use(Vue2Filters);
 Vue.use(GeneralPlugin, {
   theme: 'dark',
 });
 
-Vue.config.productionTip = false;
+Vue.component('UiSkeletonLoader', UiSkeletonLoader);
 
 App.store = store;
 App.router = router;
