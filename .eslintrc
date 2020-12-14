@@ -21,7 +21,7 @@
   "rules": {
     "import/no-unresolved": "off",
     "vue/max-attributes-per-line": ["error", {
-      "singleline": 3,
+      "singleline": 8,
       "multiline": {
         "max": 2,
         "allowFirstLine": false

@@ -14,12 +14,7 @@ export default {
 <template>
   <div>
     <ui-skeleton-loader v-if="isLoading" :height="90" :theme="$stylingTheme">
-      <rect
-        x="0" y="0"
-        rx="12"
-        ry="12" width="100%"
-        height="90px"
-      />
+      <rect x="0" y="0" rx="12" ry="12" width="100%" height="90px" />
     </ui-skeleton-loader>
     <div v-else class="conditions" :class="$stylingTheme">
       <img
