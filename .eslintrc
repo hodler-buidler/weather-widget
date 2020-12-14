@@ -33,6 +33,7 @@
     "vue/html-self-closing": "off",
     "vue/singleline-html-element-content-newline": "off",
     "vue-scoped-css/require-scoped": ["error", "always"],
-    "no-prototype-builtins": "off"
+    "no-prototype-builtins": "off",
+    "class-methods-use-this": "off"
   }
 }
