@@ -1,17 +1,34 @@
 <script>
 export default {
   name: 'WeatherDisplayConditions',
+
+  props: {
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="conditions" :class="$stylingTheme">
-    <img
-      class="icon"
-      src="http://openweathermap.org/img/wn/03d@2x.png"
-      alt=""
-    />
-    <span class="temperature">-7&deg;C</span>
+  <div>
+    <ui-skeleton-loader v-if="isLoading" :height="90" :theme="$stylingTheme">
+      <rect
+        x="0" y="0"
+        rx="12"
+        ry="12" width="100%"
+        height="90px"
+      />
+    </ui-skeleton-loader>
+    <div v-else class="conditions" :class="$stylingTheme">
+      <img
+        class="icon"
+        src="http://openweathermap.org/img/wn/03d@2x.png"
+        alt=""
+      />
+      <span class="temperature">-7&deg;C</span>
+    </div>
   </div>
 </template>
 

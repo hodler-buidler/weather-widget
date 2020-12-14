@@ -1,13 +1,17 @@
 <script>
 import OpenWeatherSdk from '@/api/open-weather-sdk';
-import WeatherDisplayStats from './WeatherDisplayStats.vue';
+import WeatherDisplayLocation from './WeatherDisplayLocation.vue';
 import WeatherDisplayConditions from './WeatherDisplayConditions.vue';
+import WeatherDisplayOverview from './WeatherDisplayOverview.vue';
+import WeatherDisplayStats from './WeatherDisplayStats.vue';
 
 export default {
   name: 'WeatherDisplay',
   components: {
-    WeatherDisplayStats,
+    WeatherDisplayLocation,
     WeatherDisplayConditions,
+    WeatherDisplayOverview,
+    WeatherDisplayStats,
   },
 
   props: {
@@ -49,43 +53,13 @@ export default {
   <div class="weather-display" :class="$stylingTheme">
     <template v-if="!isError">
       <div class="weather-display__heading">
-        <span class="location">
-          {{ location.city | capitalize }},
-          {{ location.countryCode | uppercase }}
-        </span>
+        <weather-display-location :location="location" />
       </div>
       <div class="weather-display__conditions">
-        <ui-skeleton-loader
-          v-if="isLoading"
-          :height="90"
-          :theme="$stylingTheme"
-        >
-          <rect
-            x="0" y="0"
-            rx="12"
-            ry="12" width="100%"
-            height="100%"
-          />
-        </ui-skeleton-loader>
-        <weather-display-conditions v-else />
+        <weather-display-conditions :is-loading="isLoading" />
       </div>
       <div class="weather-display__overview">
-        <ui-skeleton-loader
-          v-if="isLoading"
-          :height="40"
-          :width="185"
-          :theme="$stylingTheme"
-        >
-          <rect
-            x="0" y="0"
-            rx="12"
-            ry="12" width="100%"
-            height="100%"
-          />
-        </ui-skeleton-loader>
-        <span v-else class="overview">
-          Feels like -3&deg;C. Broken clouds. Light breeze.
-        </span>
+        <weather-display-overview :is-loading="isLoading" />
       </div>
       <div>
         <weather-display-stats :is-loading="isLoading" />
@@ -122,13 +96,5 @@ export default {
     width: 80%;
     text-align: center;
   }
-}
-
-.overview {
-  line-height: 1.5;
-}
-
-.location {
-  @extend %main-font-medium;
 }
 </style>
