@@ -10,6 +10,10 @@ const GeneralPlugin = {
         Vue.prototype.$stylingTheme = stylingTheme;
       }
     };
+
+    Vue.prototype.$setInstanceId = (instanceId) => {
+      Vue.prototype.$instanceId = instanceId;
+    };
   },
 };
 

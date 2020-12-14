@@ -1,16 +1,34 @@
 <script>
 /* eslint-disable vue/require-prop-types */
 import localeMixin from '@/mixins/locale';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
   mixins: [localeMixin],
 
-  props: ['lang', 'theme'],
+  props: ['lang', 'theme', 'instanceId'],
 
-  created() {
+  async created() {
     this.setLocale(this.lang);
     this.$setStylingTheme(this.theme);
+    this.$setInstanceId(this.instanceId);
+    await this.initLocations();
+  },
+
+  methods: {
+    ...mapActions('locations', {
+      initLocationsAction: 'initLocations',
+    }),
+
+    async initLocations() {
+      try {
+        await this.initLocationsAction({ instanceId: this.$instanceId });
+      } catch (RequestError) {
+        /** @todo Set-up error handling */
+        console.log(RequestError);
+      }
+    },
   },
 };
 </script>

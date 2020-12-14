@@ -34,6 +34,8 @@
     "vue/singleline-html-element-content-newline": "off",
     "vue-scoped-css/require-scoped": ["error", "always"],
     "no-prototype-builtins": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "warn",
+    "arrow-body-style": "off"
   }
 }
