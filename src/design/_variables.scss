@@ -4,8 +4,14 @@
 
 $white: #ffffff;
 $black: #0f1012;
+
 $light: #f0f0f0;
+$light-dark-1: darken($light, 10%);
+$light-dark-2: darken($light, 20%);
+
+
 $dark: #2b3743;
+$dark-light-1: lighten($dark, 10%); 
 
 
 /******************************/
@@ -24,9 +30,4 @@ $main-font: 'Roboto', sans-serif;
 %main-font-medium {
   font-family: $main-font;
   font-weight: 500;
-}
-
-%main-font-black {
-  font-family: $main-font;
-  font-weight: 900;
 }
