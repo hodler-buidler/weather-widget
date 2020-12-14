@@ -1,19 +1,24 @@
 <script>
+import { mapState } from 'vuex';
 import WeatherDisplay from '@/components/WeatherDisplay/WeatherDisplay.vue';
 
 export default {
   name: 'MainView',
   components: { WeatherDisplay },
+  computed: {
+    ...mapState('locations', ['locations']),
+  },
 };
 </script>
 
 <template>
   <div class="main-view" :class="$stylingTheme">
-    <div class="main-view__display-item">
-      <weather-display />
-    </div>
-    <div class="main-view__display-item">
-      <weather-display />
+    <div
+      v-for="item in locations"
+      :key="`${item.city}__${item.countryCode}`"
+      class="main-view__display-item"
+    >
+      <weather-display :location="item" />
     </div>
   </div>
 </template>

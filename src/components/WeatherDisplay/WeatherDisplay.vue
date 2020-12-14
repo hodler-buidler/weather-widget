@@ -5,13 +5,23 @@ import WeatherDisplayConditions from './WeatherDisplayConditions.vue';
 export default {
   name: 'WeatherDisplay',
   components: { WeatherDisplayStats, WeatherDisplayConditions },
+
+  props: {
+    location: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 
 <template>
   <div class="weather-display" :class="$stylingTheme">
     <div class="weather-display__heading">
-      <span class="location">London, UK</span>
+      <span class="location">
+        {{ location.city | capitalize }},
+        {{ location.countryCode | uppercase }}
+      </span>
     </div>
     <div class="weather-display__conditions">
       <weather-display-conditions />
