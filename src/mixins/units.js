@@ -1,3 +1,4 @@
+import i18n from '@/i18n';
 import {
   STANDARD_UNITS_TYPE,
   METRIC_UNITS_TYPE,
@@ -19,12 +20,13 @@ const unitsMixin = {
     },
 
     windSpeed(value, type) {
-      if (type === IMPERIAL_UNITS_TYPE) return `${value} mile/h`;
-      return `${value} m/s`;
+      if (type === IMPERIAL_UNITS_TYPE)
+        return `${value} ${i18n.t('units.mile/h')}`;
+      return `${value} ${i18n.t('units.m/s')}`;
     },
 
     pressure(value) {
-      return `${value}hPa`;
+      return `${value} ${i18n.t('units.hPa')}`;
     },
 
     humidity(value) {
@@ -36,8 +38,11 @@ const unitsMixin = {
     },
 
     visibility(value, type) {
-      if (type === IMPERIAL_UNITS_TYPE) return `${metersToMile(value)} miles`;
-      return `${metersToKm(value)} km`;
+      if (type === IMPERIAL_UNITS_TYPE) {
+        return `${metersToMile(value)} ${i18n.t('units.miles')}`;
+      }
+
+      return `${metersToKm(value)} ${i18n.t('units.km')}`;
     },
   },
 };

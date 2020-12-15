@@ -20,6 +20,13 @@ const translations = {
   words: {
     feelsLike: 'feels like',
   },
+  units: {
+    'mile/h': 'mile/h',
+    'm/s': 'm/s',
+    hPa: 'hPa',
+    miles: 'miles',
+    km: 'km',
+  },
 };
 
 export default translations;
