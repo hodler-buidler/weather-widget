@@ -2,7 +2,7 @@ const translations = {
   stats: {
     humidity: 'влажность',
     visibility: 'видимость',
-    dewPoint: 'точка росы',
+    cloudiness: 'облачность',
   },
   settingsForm: {
     title: 'настройки',

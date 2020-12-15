@@ -70,7 +70,10 @@ export default {
         />
       </div>
       <div>
-        <weather-display-stats :is-loading="isLoading" />
+        <weather-display-stats
+          :weather-data="weatherData"
+          :is-loading="isLoading"
+        />
       </div>
     </template>
     <div v-show="isError">
