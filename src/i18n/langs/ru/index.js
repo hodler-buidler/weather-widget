@@ -14,6 +14,9 @@ const translations = {
     dataNotLoadedForCity: `произошла какая-то ошибка, данные не могут быть загружены для города`,
     locationsNotInitiated: `Данные про местонахождения не могут быть получены, проверьте соединение с Интернетом и перезагрузите страницу.`,
   },
+  loadersText: {
+    locations: 'Местоположения загружаются',
+  },
 };
 
 export default translations;

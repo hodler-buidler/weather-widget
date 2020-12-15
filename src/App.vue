@@ -11,6 +11,7 @@ export default {
 
   data: () => ({
     isError: false,
+    isLocationsLoading: false,
   }),
 
   async created() {
@@ -27,9 +28,12 @@ export default {
 
     async initLocations() {
       try {
+        this.isLocationsLoading = true;
         await this.initLocationsAction({ instanceId: this.$instanceId });
       } catch (RequestError) {
         this.isError = true;
+      } finally {
+        this.isLocationsLoading = false;
       }
     },
   },
@@ -38,6 +42,12 @@ export default {
 
 <template>
   <div class="widget-wrap" :class="$stylingTheme">
+    <div v-if="isLocationsLoading" class="locations-loader">
+      {{
+        $t('loadersText.locations') | capitalize({ onlyFirstLetter: true })
+      }}...
+    </div>
+
     <div v-if="isError">
       {{
         $t('errors.locationsNotInitiated')
@@ -69,5 +79,9 @@ export default {
   font-size: $base-font-size;
   background: var(--color-main-background);
   color: var(--color-main-text);
+}
+
+.locations-loader {
+  text-align: center;
 }
 </style>
