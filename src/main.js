@@ -21,9 +21,7 @@ Vue.config.productionTip = false;
 
 Vue.use(VueCustomElement);
 Vue.use(Vue2Filters);
-Vue.use(GeneralPlugin, {
-  theme: 'dark',
-});
+Vue.use(GeneralPlugin);
 
 Vue.component('UiSkeletonLoader', UiSkeletonLoader);
 Vue.component('UiIcon', UiIcon);

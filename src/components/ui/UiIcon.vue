@@ -38,6 +38,10 @@ export default {
     disabledClass() {
       return this.disabled ? 'disabled' : '';
     },
+
+    tabIndexValue() {
+      return this.clickable ? 0 : false;
+    },
   },
 };
 </script>
@@ -47,6 +51,7 @@ export default {
     class="ui-icon material-icons"
     :class="[clickableClass, disabledClass]"
     :style="styles"
+    :tabindex="tabIndexValue"
   >
     {{ name }}
   </span>
@@ -57,6 +62,7 @@ $default-opacity: 0.7;
 
 .ui-icon {
   user-select: none;
+  outline: none;
 }
 
 .clickable {

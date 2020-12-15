@@ -1,12 +1,20 @@
 <script>
 export default {
   name: 'DisplaySettingsTrigger',
+
+  props: {
+    isActive: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 
 <template>
   <div class="settings-trigger" :class="$stylingTheme">
-    <ui-icon name="settings" clickable />
+    <ui-icon v-if="isActive" name="settings" clickable />
+    <ui-icon v-else name="close" clickable />
   </div>
 </template>
 
@@ -15,5 +23,6 @@ export default {
   position: absolute;
   top: 10px;
   right: 10px;
+  z-index: 5;
 }
 </style>
