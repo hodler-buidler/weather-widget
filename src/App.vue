@@ -73,7 +73,7 @@ export default {
 
 .widget-wrap {
   position: relative;
-  padding: 15px;
+  padding: $app-padding;
   max-width: 300px;
   box-sizing: border-box;
   @extend %main-font;

@@ -13,14 +13,17 @@ export default {
 
 <template>
   <transition name="fade">
-    <div v-show="isActive" class="settings-wrapper" :class="$stylingTheme">
-      Content
+    <div v-show="isActive" class="settings" :class="$stylingTheme">
+      <div class="settings__header">
+        {{ $t('settingsForm.title') | capFirstLetter }}
+      </div>
+      <div>cd</div>
     </div>
   </transition>
 </template>
 
 <style lang="scss" scoped>
-.settings-wrapper {
+.settings {
   --color-background: #{$light};
 }
 
@@ -28,13 +31,19 @@ export default {
   --color-background: #{$dark};
 }
 
-.settings-wrapper {
+.settings {
   position: absolute;
   top: 0;
   left: 0;
   background: var(--color-background);
   width: 100%;
   height: 100%;
+  padding: $app-padding;
+  box-sizing: border-box;
+
+  &__header {
+    margin-bottom: 20px;
+  }
 }
 
 .fade-enter-active,
