@@ -7,7 +7,7 @@ export default {
   name: 'App',
   mixins: [localeMixin],
 
-  props: ['lang', 'theme', 'instanceId'],
+  props: ['lang', 'theme', 'instanceId', 'units'],
 
   data: () => ({
     isError: false,
@@ -18,6 +18,7 @@ export default {
     this.setLocale(this.lang);
     this.$setStylingTheme(this.theme);
     this.$setInstanceId(this.instanceId);
+    this.$setUnitsType(this.units);
     await this.initLocations();
   },
 

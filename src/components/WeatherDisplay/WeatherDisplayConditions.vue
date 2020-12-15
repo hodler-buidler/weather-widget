@@ -1,11 +1,39 @@
 <script>
+import OpenWeatherSdk from '@/api/open-weather-sdk';
+import unitsMixin from '@/mixins/units';
+
 export default {
   name: 'WeatherDisplayConditions',
 
+  mixins: [unitsMixin],
+
   props: {
+    weatherData: {
+      validator(prop) {
+        return typeof prop === 'object' || prop === null;
+      },
+      required: true,
+    },
+
     isLoading: {
       type: Boolean,
       default: false,
+    },
+  },
+
+  computed: {
+    temperature() {
+      if (this.weatherData) {
+        return this.weatherData.main.temp;
+      }
+      return 0;
+    },
+
+    icon() {
+      if (this.weatherData) {
+        return OpenWeatherSdk.makeIconPath(this.weatherData.weather[0].icon, 2);
+      }
+      return '';
     },
   },
 };
@@ -17,12 +45,10 @@ export default {
       <rect x="0" y="0" rx="12" ry="12" width="100%" height="90px" />
     </ui-skeleton-loader>
     <div v-else class="conditions" :class="$stylingTheme">
-      <img
-        class="icon"
-        src="http://openweathermap.org/img/wn/03d@2x.png"
-        alt=""
-      />
-      <span class="temperature">-7&deg;C</span>
+      <img class="icon" :src="icon" alt="" />
+      <span class="temperature">
+        {{ temperature | temperature($unitsType) }}
+      </span>
     </div>
   </div>
 </template>
@@ -47,6 +73,7 @@ export default {
 .temperature {
   font-size: $base-font-size * 3;
   @extend %main-font-medium;
+  white-space: nowrap;
 }
 
 .icon {

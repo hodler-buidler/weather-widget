@@ -38,6 +38,8 @@ export default {
         this.weatherData = await OpenWeatherSdk.weather.byCityName({
           city: this.location.city,
           countryCode: this.location.countryCode,
+          units: this.$unitsType,
+          lang: this.$i18n.locale,
         });
       } catch (RequestError) {
         this.isError = true;
@@ -56,7 +58,10 @@ export default {
         <weather-display-location :location="location" />
       </div>
       <div class="weather-display__conditions">
-        <weather-display-conditions :is-loading="isLoading" />
+        <weather-display-conditions
+          :weather-data="weatherData"
+          :is-loading="isLoading"
+        />
       </div>
       <div class="weather-display__overview">
         <weather-display-overview :is-loading="isLoading" />
