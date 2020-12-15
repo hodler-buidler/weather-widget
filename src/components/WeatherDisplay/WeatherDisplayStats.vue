@@ -65,14 +65,14 @@ export default {
     <div class="stat">
       <stat-item-skeleton v-if="isLoading" />
       <template v-else>
-        <span class="material-icons stat__label-icon">near_me</span>
+        <ui-icon name="near_me" class="stat__label-icon" />
         <span class="nowrap">{{ windSpeed | windSpeed($unitsType) }}</span>
       </template>
     </div>
     <div class="stat">
       <stat-item-skeleton v-if="isLoading" />
       <template v-else>
-        <span class="material-icons stat__label-icon">blur_circular</span>
+        <ui-icon name="blur_circular" class="stat__label-icon" />
         <span>{{ pressure | pressure }}</span>
       </template>
     </div>

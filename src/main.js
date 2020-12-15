@@ -15,6 +15,7 @@ import i18n from '@/i18n';
 import GeneralPlugin from '@/plugins/GeneralPlugin';
 
 import UiSkeletonLoader from '@/components/ui/UiSkeletonLoader.vue';
+import UiIcon from '@/components/ui/UiIcon.vue';
 
 Vue.config.productionTip = false;
 
@@ -25,6 +26,7 @@ Vue.use(GeneralPlugin, {
 });
 
 Vue.component('UiSkeletonLoader', UiSkeletonLoader);
+Vue.component('UiIcon', UiIcon);
 
 App.store = store;
 App.router = router;

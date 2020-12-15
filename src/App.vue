@@ -54,7 +54,7 @@ export default {
     </div>
     <router-view v-else />
 
-    <display-settings />
+    <display-settings v-if="!isError && !isLocationsLoading" />
   </div>
 </template>
 
