@@ -1,6 +1,9 @@
 <script>
+import DisplaySettingsLocations from './DisplaySettingsLocations.vue';
+
 export default {
   name: 'DisplaySettingsContent',
+  components: { DisplaySettingsLocations },
 
   props: {
     isActive: {
@@ -17,7 +20,9 @@ export default {
       <div class="settings__header">
         {{ $t('settingsForm.title') | capFirstLetter }}
       </div>
-      <div>cd</div>
+      <div>
+        <display-settings-locations />
+      </div>
     </div>
   </transition>
 </template>
@@ -37,7 +42,7 @@ export default {
   left: 0;
   background: var(--color-background);
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   padding: $app-padding;
   box-sizing: border-box;
 
