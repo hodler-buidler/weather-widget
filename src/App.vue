@@ -1,10 +1,12 @@
 <script>
 /* eslint-disable vue/require-prop-types */
-import localeMixin from '@/mixins/locale';
 import { mapActions } from 'vuex';
+import localeMixin from '@/mixins/locale';
+import DisplaySettings from '@/components/DisplaySettings/DisplaySettings.vue';
 
 export default {
   name: 'App',
+  components: { DisplaySettings },
   mixins: [localeMixin],
 
   props: ['lang', 'theme', 'instanceId', 'units'],
@@ -51,6 +53,8 @@ export default {
       {{ $t('errors.locationsNotInitiated') | capFirstLetter }}.
     </div>
     <router-view v-else />
+
+    <display-settings />
   </div>
 </template>
 
@@ -68,6 +72,7 @@ export default {
 }
 
 .widget-wrap {
+  position: relative;
   padding: 15px;
   max-width: 300px;
   box-sizing: border-box;

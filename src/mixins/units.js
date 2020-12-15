@@ -37,7 +37,7 @@ const unitsMixin = {
 
     visibility(value, type) {
       if (type === IMPERIAL_UNITS_TYPE) return `${metersToMile(value)} miles`;
-      return `${metersToKm(value)}km`;
+      return `${metersToKm(value)} km`;
     },
   },
 };
