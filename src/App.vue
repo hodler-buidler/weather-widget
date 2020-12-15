@@ -44,16 +44,11 @@ export default {
 <template>
   <div class="widget-wrap" :class="$stylingTheme">
     <div v-if="isLocationsLoading" class="locations-loader">
-      {{
-        $t('loadersText.locations') | capitalize({ onlyFirstLetter: true })
-      }}...
+      {{ $t('loadersText.locations') | capFirstLetter }}...
     </div>
 
     <div v-if="isError">
-      {{
-        $t('errors.locationsNotInitiated')
-          | capitalize({ onlyFirstLetter: true })
-      }}.
+      {{ $t('errors.locationsNotInitiated') | capFirstLetter }}.
     </div>
     <router-view v-else />
   </div>

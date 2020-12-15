@@ -49,12 +49,10 @@ export default {
     </ui-skeleton-loader>
     <div v-else class="overview" :class="$stylingTheme">
       <span>
-        {{ $t('words.feelsLike') | capitalize({ onlyFirstLetter: true }) }}
+        {{ $t('words.feelsLike') | capFirstLetter }}
         {{ feelTemperature | temperature($unitsType) }}.
       </span>
-      <span>
-        {{ weatherDescription | capitalize({ onlyFirstLetter: true }) }}.
-      </span>
+      <span>{{ weatherDescription | capFirstLetter }}.</span>
     </div>
   </div>
 </template>

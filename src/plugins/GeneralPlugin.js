@@ -27,6 +27,12 @@ const GeneralPlugin = {
         Vue.prototype.$unitsType = type;
       }
     };
+
+    Vue.filter('capFirstLetter', (value) => {
+      if (!value) return '';
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    });
   },
 };
 

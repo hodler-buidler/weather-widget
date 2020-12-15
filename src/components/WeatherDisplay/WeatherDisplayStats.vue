@@ -80,7 +80,7 @@ export default {
       <stat-item-skeleton v-if="isLoading" />
       <template v-else>
         <span class="stat__label-text">
-          {{ $t('stats.humidity') | capitalize({ onlyFirstLetter: true }) }}:
+          {{ $t('stats.humidity') | capFirstLetter }}:
         </span>
         <span>{{ humidity | humidity }}</span>
       </template>
@@ -89,7 +89,7 @@ export default {
       <stat-item-skeleton v-if="isLoading" />
       <template v-else>
         <span class="stat__label-text">
-          {{ $t('stats.cloudiness') | capitalize({ onlyFirstLetter: true }) }}:
+          {{ $t('stats.cloudiness') | capFirstLetter }}:
         </span>
         <span>{{ cloudiness | cloudiness }}</span>
       </template>
@@ -98,7 +98,7 @@ export default {
       <stat-item-skeleton v-if="isLoading" />
       <template v-else>
         <span class="stat__label-text">
-          {{ $t('stats.visibility') | capitalize({ onlyFirstLetter: true }) }}:
+          {{ $t('stats.visibility') | capFirstLetter }}:
         </span>
         <span class="nowrap">{{ visibility | visibility($unitsType) }}</span>
       </template>

@@ -78,10 +78,7 @@ export default {
     </template>
     <div v-show="isError">
       <span>
-        {{
-          $t('errors.dataNotLoadedForCity')
-            | capitalize({ onlyFirstLetter: true })
-        }}
+        {{ $t('errors.dataNotLoadedForCity') | capFirstLetter }}
         {{ location.city | capitalize }}.
       </span>
     </div>
