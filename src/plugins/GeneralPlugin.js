@@ -4,6 +4,7 @@ import {
   DEFAULT_THEME,
   DEFAULT_UNITS_TYPE,
   SUPPORTED_UNITS,
+  DEFAULT_INSTANCE_KEY,
 } from '@/config/general';
 
 const GeneralPlugin = {
@@ -18,7 +19,7 @@ const GeneralPlugin = {
     };
 
     Vue.prototype.$setInstanceId = (instanceId) => {
-      Vue.prototype.$instanceId = instanceId;
+      Vue.prototype.$instanceId = instanceId || DEFAULT_INSTANCE_KEY;
     };
 
     Vue.prototype.$setUnitsType = (type) => {

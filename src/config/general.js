@@ -1,3 +1,5 @@
+export const DEFAULT_INSTANCE_KEY = 'WEATHER_WIDGET';
+
 export const DEFAULT_THEME = 'default';
 export const DARK_THEME = 'dark';
 
