@@ -4,7 +4,6 @@ import unitsMixin from '@/mixins/units';
 
 export default {
   name: 'WeatherDisplayConditions',
-
   mixins: [unitsMixin],
 
   props: {

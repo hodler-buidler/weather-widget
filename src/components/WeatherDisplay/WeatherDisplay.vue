@@ -64,7 +64,10 @@ export default {
         />
       </div>
       <div class="weather-display__overview">
-        <weather-display-overview :is-loading="isLoading" />
+        <weather-display-overview
+          :weather-data="weatherData"
+          :is-loading="isLoading"
+        />
       </div>
       <div>
         <weather-display-stats :is-loading="isLoading" />

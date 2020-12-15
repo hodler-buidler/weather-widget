@@ -53,7 +53,7 @@ export default {
       {{
         $t('errors.locationsNotInitiated')
           | capitalize({ onlyFirstLetter: true })
-      }}
+      }}.
     </div>
     <router-view v-else />
   </div>
