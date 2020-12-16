@@ -20,6 +20,7 @@ After that, you can use ```<weather-widget></weather-widget>``` at your HTML as 
 3) **units** (string) - accepts three values: *standart*, *metric*, *imperial*. Responsible for how units of measurment would be displayed. Default: metric.
 
 **NEEDS DEVELOPMENT to complete**
+
 4) **instanceId** (string) - if you want to add multiple instances of widgets at page, you may want to set value to this attribute to make storage usage separate.
 
 ## How to set-up development?
