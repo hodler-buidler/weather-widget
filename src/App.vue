@@ -1,6 +1,6 @@
 <script>
 /* eslint-disable vue/require-prop-types */
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import localeMixin from '@/mixins/locale';
 import DisplaySettings from '@/components/DisplaySettings/DisplaySettings.vue';
 
@@ -15,6 +15,15 @@ export default {
     isError: false,
     isLocationsLoading: false,
   }),
+
+  computed: {
+    ...mapState('general', ['isGlobalScrollLocked']),
+
+    scrollClass() {
+      if (this.isGlobalScrollLocked) return 'unscrollable';
+      return 'scrollable';
+    },
+  },
 
   async created() {
     this.setLocale(this.lang);
@@ -44,7 +53,7 @@ export default {
 </script>
 
 <template>
-  <div class="widget-wrap" :class="$stylingTheme">
+  <div class="widget-wrap" :class="[$stylingTheme, scrollClass]">
     <div v-if="isLocationsLoading" class="locations-loader">
       {{ $t('loadersText.locations') | capFirstLetter }}...
     </div>
@@ -74,12 +83,22 @@ export default {
 .widget-wrap {
   position: relative;
   padding: $app-padding;
-  max-width: 300px;
+  max-width: $app-width;
+  max-height: $app-height;
+  overflow-y: auto;
   box-sizing: border-box;
   @extend %main-font;
   font-size: $base-font-size;
   background: var(--color-main-background);
   color: var(--color-main-text);
+}
+
+.scrollable {
+  overflow-y: auto;
+}
+
+.unscrollable {
+  overflow-y: hidden;
 }
 
 .locations-loader {

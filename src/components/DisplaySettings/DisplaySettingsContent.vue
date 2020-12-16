@@ -24,8 +24,10 @@ export default {
       handler(value) {
         if (value) {
           window.addEventListener('keydown', this.onKeyDown);
+          this.lockWidgetScroll();
         } else {
           window.removeEventListener('keydown', this.onKeyDown);
+          this.unlockWidgetScroll();
           this.clearAddCityServerErrors();
         }
       },
@@ -34,6 +36,7 @@ export default {
   },
 
   methods: {
+    ...mapActions('general', ['lockWidgetScroll', 'unlockWidgetScroll']),
     ...mapActions('locations', ['addCity']),
 
     async addNewCity(addCityFormData) {
@@ -116,6 +119,8 @@ export default {
 
   &__locations {
     margin-bottom: 20px;
+    max-height: $app-height * 0.7;
+    overflow-y: auto;
   }
 }
 
