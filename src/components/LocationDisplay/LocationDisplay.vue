@@ -7,6 +7,19 @@ export default {
       type: Object,
       required: true,
     },
+
+    removable: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  methods: {
+    removeLocation() {
+      if (this.removable) {
+        this.$emit('remove', this.location);
+      }
+    },
   },
 };
 </script>
@@ -20,7 +33,13 @@ export default {
       </div>
     </div>
     <div>
-      <ui-icon class="i-delete" name="delete" clickable />
+      <ui-icon
+        v-if="removable"
+        class="i-delete"
+        name="delete"
+        clickable
+        @click.native="removeLocation"
+      />
     </div>
   </div>
 </template>

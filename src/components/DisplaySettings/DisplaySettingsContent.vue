@@ -19,6 +19,12 @@ export default {
     addCityServerErrors: {},
   }),
 
+  watch: {
+    isActive(value) {
+      if (!value) this.clearAddCityServerErrors();
+    },
+  },
+
   methods: {
     ...mapActions('locations', ['addCity']),
 
@@ -26,6 +32,7 @@ export default {
       this.isCityDataLoading = true;
       try {
         await this.addCity(addCityFormData);
+        this.clearAddCityServerErrors();
       } catch (error) {
         if (error.isDuplicate) {
           const duplicationError = this.$t('errors.duplicateCityRequested');
@@ -38,6 +45,10 @@ export default {
       } finally {
         this.isCityDataLoading = false;
       }
+    },
+
+    clearAddCityServerErrors() {
+      this.addCityServerErrors = {};
     },
   },
 };

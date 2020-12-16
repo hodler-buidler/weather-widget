@@ -5,6 +5,7 @@ import IpInfoSdk from '@/api/ip-info-sdk';
 import OpenWeatherSdk from '@/api/open-weather-sdk';
 import makeLocation from '@/factories/makeLocation';
 import isDuplicateLocation from '@/utils/isDuplicateLocation';
+import findLocationIndex from '@/utils/findLocationIndex';
 
 const weather = {
   namespaced: true,
@@ -24,6 +25,13 @@ const weather = {
     ADD_LOCATION(state, location) {
       if (!isDuplicateLocation(location, state.locations)) {
         state.locations.push(location);
+      }
+    },
+
+    REMOVE_LOCATION(state, location) {
+      const locationIndex = findLocationIndex(location, state.locations);
+      if (locationIndex >= 0) {
+        state.locations.splice(locationIndex, 1);
       }
     },
 
@@ -66,6 +74,15 @@ const weather = {
       const DuplicateError = { isDuplicate: true };
       if (isDuplicateLocation(location, state.locations)) throw DuplicateError;
       else dispatch('addLocation', location);
+    },
+
+    removeLocation({ commit, state }, location) {
+      commit('REMOVE_LOCATION', location);
+      if (state.locations.length) {
+        state.LocationsCache.setAll(state.locations);
+      } else {
+        state.LocationsCache.clear();
+      }
     },
   },
 };

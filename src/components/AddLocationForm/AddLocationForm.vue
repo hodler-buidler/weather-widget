@@ -1,4 +1,8 @@
 <script>
+const INITIAL_FORM_DATA = {
+  city: '',
+};
+
 export default {
   name: 'AddLocationForm',
 
@@ -15,9 +19,7 @@ export default {
   },
 
   data: () => ({
-    form: {
-      city: '',
-    },
+    form: { ...INITIAL_FORM_DATA },
   }),
 
   methods: {
@@ -25,6 +27,7 @@ export default {
       e.preventDefault();
       if (this.validate()) {
         this.$emit('submit', this.form);
+        this.resetForm();
       }
     },
 
@@ -35,6 +38,10 @@ export default {
     validateCity() {
       if (!this.form.city) return false;
       return true;
+    },
+
+    resetForm() {
+      this.form = { ...INITIAL_FORM_DATA };
     },
   },
 };

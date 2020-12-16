@@ -23,6 +23,10 @@ class Location extends Model {
     const serializedLocations = JSON.stringify(locations);
     this.storage.setItem(this.locationsKey, serializedLocations);
   }
+
+  clear() {
+    this.storage.removeItem(this.locationsKey);
+  }
 }
 
 export default Location;

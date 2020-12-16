@@ -1,5 +1,5 @@
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import VueDraggable from 'vuedraggable';
 import LocationDisplay from '@/components/LocationDisplay/LocationDisplay.vue';
 
@@ -18,6 +18,14 @@ export default {
         console.log(value);
       },
     },
+
+    isLastLocation() {
+      return this.locations.length === 1;
+    },
+  },
+
+  methods: {
+    ...mapActions('locations', ['removeLocation']),
   },
 };
 </script>
@@ -33,6 +41,8 @@ export default {
       :key="`${item.city}--${item.countryCode}`"
       :location="item"
       class="locations__item"
+      :removable="!isLastLocation"
+      @remove="removeLocation"
     />
   </vue-draggable>
 </template>
