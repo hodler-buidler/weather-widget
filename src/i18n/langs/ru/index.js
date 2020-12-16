@@ -13,6 +13,8 @@ const translations = {
   errors: {
     dataNotLoadedForCity: `произошла какая-то ошибка, данные не могут быть загружены для города`,
     locationsNotInitiated: `данные про местонахождения не могут быть получены, проверьте соединение с Интернетом и перезагрузите страницу`,
+    cityNotIdentified: 'город не найден',
+    duplicateCityRequested: 'город уже добавлен',
   },
   loadersText: {
     locations: 'местоположения загружаются',

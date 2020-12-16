@@ -99,5 +99,9 @@ export default {
     color: var(--color-default-text);
     opacity: 0.3;
   }
+
+  &:disabled {
+    opacity: 0.6;
+  }
 }
 </style>
