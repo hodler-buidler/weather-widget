@@ -1,10 +1,13 @@
 <script>
+import NearMeIcon from 'vue-material-design-icons/NearMe.vue';
+import BlurRadialIcon from 'vue-material-design-icons/BlurRadial.vue';
+
 import unitsMixin from '@/mixins/units';
 import StatItemSkeleton from './StatItemSkeleton.vue';
 
 export default {
   name: 'WeatherDisplayStats',
-  components: { StatItemSkeleton },
+  components: { StatItemSkeleton, NearMeIcon, BlurRadialIcon },
   mixins: [unitsMixin],
 
   props: {
@@ -65,14 +68,18 @@ export default {
     <div class="stat">
       <stat-item-skeleton v-if="isLoading" />
       <template v-else>
-        <ui-icon name="near_me" class="stat__label-icon" />
+        <ui-icon class="stat__label-icon">
+          <near-me-icon />
+        </ui-icon>
         <span class="nowrap">{{ windSpeed | windSpeed($unitsType) }}</span>
       </template>
     </div>
     <div class="stat">
       <stat-item-skeleton v-if="isLoading" />
       <template v-else>
-        <ui-icon name="blur_circular" class="stat__label-icon" />
+        <ui-icon class="stat__label-icon">
+          <blur-radial-icon />
+        </ui-icon>
         <span>{{ pressure | pressure }}</span>
       </template>
     </div>

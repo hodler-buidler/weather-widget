@@ -3,16 +3,6 @@ export default {
   name: 'UiIcon',
 
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-
-    size: {
-      type: String,
-      default: '',
-    },
-
     clickable: {
       type: Boolean,
       default: false,
@@ -25,12 +15,6 @@ export default {
   },
 
   computed: {
-    styles() {
-      return {
-        fontSize: this.size || 'default',
-      };
-    },
-
     clickableClass() {
       return this.clickable ? 'clickable' : '';
     },
@@ -48,12 +32,11 @@ export default {
 
 <template>
   <span
-    class="ui-icon material-icons"
+    class="ui-icon"
     :class="[clickableClass, disabledClass]"
-    :style="styles"
     :tabindex="tabIndexValue"
   >
-    {{ name }}
+    <slot />
   </span>
 </template>
 

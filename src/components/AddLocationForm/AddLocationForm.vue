@@ -1,10 +1,15 @@
 <script>
+import SendIcon from 'vue-material-design-icons/SubdirectoryArrowLeft.vue';
+import RefreshIcon from 'vue-material-design-icons/Refresh.vue';
+
 const INITIAL_FORM_DATA = {
   city: '',
 };
 
 export default {
   name: 'AddLocationForm',
+
+  components: { SendIcon, RefreshIcon },
 
   props: {
     isLoading: {
@@ -74,9 +79,13 @@ export default {
         />
         <div>
           <button v-if="!isLoading" type="submit" class="submit-btn">
-            <ui-icon name="subdirectory_arrow_left" clickable />
+            <ui-icon clickable>
+              <send-icon />
+            </ui-icon>
           </button>
-          <ui-icon v-else class="loading-icon" name="refresh" />
+          <ui-icon v-else class="loading-icon">
+            <refresh-icon />
+          </ui-icon>
         </div>
       </div>
 

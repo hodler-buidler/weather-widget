@@ -1,6 +1,11 @@
 <script>
+import DeleteIcon from 'vue-material-design-icons/Delete.vue';
+import MenuIcon from 'vue-material-design-icons/Menu.vue';
+
 export default {
   name: 'LocationDisplay',
+
+  components: { DeleteIcon, MenuIcon },
 
   props: {
     location: {
@@ -41,8 +46,9 @@ export default {
         v-if="withHandle"
         class="handle location__burger"
         :class="handleClass"
-        name="menu"
-      />
+      >
+        <menu-icon />
+      </ui-icon>
       <div>
         {{ location.city | capitalize }}
       </div>
@@ -51,10 +57,11 @@ export default {
       <ui-icon
         v-if="removable"
         class="i-delete"
-        name="delete"
         clickable
         @click.native="removeLocation"
-      />
+      >
+        <delete-icon />
+      </ui-icon>
     </div>
   </div>
 </template>

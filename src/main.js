@@ -4,8 +4,6 @@ import Vue2Filters from 'vue2-filters';
 
 // Polyfill for older browsers
 import 'document-register-element/build/document-register-element';
-// Material icons
-import 'material-icons/iconfont/material-icons.css';
 
 import App from '@/App.vue';
 import router from '@/router';

@@ -7,7 +7,7 @@ export default {
   components: { DisplaySettingsTrigger, DisplaySettingsContent },
 
   data: () => ({
-    isSettingsVisible: true,
+    isSettingsVisible: false,
   }),
 
   methods: {

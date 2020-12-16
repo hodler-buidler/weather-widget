@@ -1,6 +1,10 @@
 <script>
+import SettingsIcon from 'vue-material-design-icons/Cog.vue';
+import CloseIcon from 'vue-material-design-icons/Close.vue';
+
 export default {
   name: 'DisplaySettingsTrigger',
+  components: { SettingsIcon, CloseIcon },
 
   props: {
     isActive: {
@@ -13,8 +17,12 @@ export default {
 
 <template>
   <div class="settings-trigger" :class="$stylingTheme">
-    <ui-icon v-if="isActive" name="settings" clickable />
-    <ui-icon v-else name="close" clickable />
+    <ui-icon v-if="isActive" clickable>
+      <settings-icon />
+    </ui-icon>
+    <ui-icon v-else clickable>
+      <close-icon />
+    </ui-icon>
   </div>
 </template>
 
