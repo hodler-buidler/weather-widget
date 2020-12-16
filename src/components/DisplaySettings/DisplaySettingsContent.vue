@@ -1,4 +1,5 @@
 <script>
+import { mapActions } from 'vuex';
 import AddLocationForm from '@/components/AddLocationForm/AddLocationForm.vue';
 import DisplaySettingsLocations from './DisplaySettingsLocations.vue';
 
@@ -10,6 +11,33 @@ export default {
     isActive: {
       type: Boolean,
       default: false,
+    },
+  },
+
+  data: () => ({
+    isCityDataLoading: false,
+    addCityServerErrors: {},
+  }),
+
+  methods: {
+    ...mapActions('locations', ['addCity']),
+
+    async addNewCity(addCityFormData) {
+      this.isCityDataLoading = true;
+      try {
+        await this.addCity(addCityFormData);
+      } catch (error) {
+        if (error.isDuplicate) {
+          const duplicationError = this.$t('errors.duplicateCityRequested');
+          this.$set(this.addCityServerErrors, 'city', duplicationError);
+          return;
+        }
+
+        const cityNotIdentifiedError = this.$t('errors.cityNotIdentified');
+        this.$set(this.addCityServerErrors, 'city', cityNotIdentifiedError);
+      } finally {
+        this.isCityDataLoading = false;
+      }
     },
   },
 };
@@ -25,7 +53,11 @@ export default {
         <display-settings-locations />
       </div>
       <div>
-        <add-location-form />
+        <add-location-form
+          :is-loading="isCityDataLoading"
+          :server-errors="addCityServerErrors"
+          @submit="addNewCity"
+        />
       </div>
     </div>
   </transition>

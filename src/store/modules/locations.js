@@ -2,7 +2,9 @@
 import Storage from '@/storage/Storage';
 import Location from '@/storage/models/Location';
 import IpInfoSdk from '@/api/ip-info-sdk';
+import OpenWeatherSdk from '@/api/open-weather-sdk';
 import makeLocation from '@/factories/makeLocation';
+import isDuplicateLocation from '@/utils/isDuplicateLocation';
 
 const weather = {
   namespaced: true,
@@ -20,11 +22,7 @@ const weather = {
     },
 
     ADD_LOCATION(state, location) {
-      const hasDuplicate = state.locations.find(({ city, countryCode }) => {
-        return city === location.city && countryCode === location.countryCode;
-      });
-
-      if (!hasDuplicate) {
+      if (!isDuplicateLocation(location, state.locations)) {
         state.locations.push(location);
       }
     },
@@ -56,6 +54,18 @@ const weather = {
       if (state.locations.length) {
         state.LocationsCache.setAll(state.locations);
       }
+    },
+
+    async addCity({ state, dispatch }, { city }) {
+      const data = await OpenWeatherSdk.weather.byCityName({ city });
+      const location = makeLocation({
+        city: data.name,
+        countryCode: data.sys.country,
+      });
+
+      const DuplicateError = { isDuplicate: true };
+      if (isDuplicateLocation(location, state.locations)) throw DuplicateError;
+      else dispatch('addLocation', location);
     },
   },
 };

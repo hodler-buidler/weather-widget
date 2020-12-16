@@ -23,13 +23,28 @@ export default {
 </script>
 
 <template>
-  <vue-draggable v-model="locationsList" :class="$stylingTheme">
+  <vue-draggable
+    v-model="locationsList"
+    class="locations"
+    :class="$stylingTheme"
+  >
     <location-display
       v-for="item in locations"
       :key="`${item.city}--${item.countryCode}`"
       :location="item"
+      class="locations__item"
     />
   </vue-draggable>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.locations {
+  &__item {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+</style>

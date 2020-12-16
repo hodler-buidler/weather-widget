@@ -17,7 +17,11 @@ export default {
     },
 
     validate() {
-      /** Add validation here when it would be necessary */
+      return this.validateCity();
+    },
+
+    validateCity() {
+      if (!this.form.city) return false;
       return true;
     },
   },
