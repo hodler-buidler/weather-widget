@@ -1,9 +1,10 @@
 <script>
+import AddLocationForm from '@/components/AddLocationForm/AddLocationForm.vue';
 import DisplaySettingsLocations from './DisplaySettingsLocations.vue';
 
 export default {
   name: 'DisplaySettingsContent',
-  components: { DisplaySettingsLocations },
+  components: { DisplaySettingsLocations, AddLocationForm },
 
   props: {
     isActive: {
@@ -20,8 +21,11 @@ export default {
       <div class="settings__header">
         {{ $t('settingsForm.title') | capFirstLetter }}
       </div>
-      <div>
+      <div class="settings__locations">
         <display-settings-locations />
+      </div>
+      <div>
+        <add-location-form />
       </div>
     </div>
   </transition>
@@ -47,6 +51,11 @@ export default {
   box-sizing: border-box;
 
   &__header {
+    margin-bottom: 20px;
+    @extend %main-font-medium;
+  }
+
+  &__locations {
     margin-bottom: 20px;
   }
 }
