@@ -3,7 +3,7 @@
 ![Light theme](https://raw.githubusercontent.com/NikitosGolubev/images/master/widget-light.png)
 ![Dark theme](https://raw.githubusercontent.com/NikitosGolubev/images/master/widget-dark.png)
 
-**Demo**: mydemo.ru
+**Demo**: https://nikitosgolubev.github.io/weatherWidget/
 
 Here, I've developed weather-widget which based on 2 APIs: IpInfo.io and OpenWeatherMap.org.
 This is brief overview of my work, which was made specifically as a test-task to apply at Plumsail on Front-end Middle Developer position.
