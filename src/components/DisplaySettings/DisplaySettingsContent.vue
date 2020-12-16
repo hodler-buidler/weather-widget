@@ -20,8 +20,16 @@ export default {
   }),
 
   watch: {
-    isActive(value) {
-      if (!value) this.clearAddCityServerErrors();
+    isActive: {
+      handler(value) {
+        if (value) {
+          window.addEventListener('keydown', this.onKeyDown);
+        } else {
+          window.removeEventListener('keydown', this.onKeyDown);
+          this.clearAddCityServerErrors();
+        }
+      },
+      immediate: true,
     },
   },
 
@@ -49,6 +57,14 @@ export default {
 
     clearAddCityServerErrors() {
       this.addCityServerErrors = {};
+    },
+
+    onKeyDown(event) {
+      if (event.key === 'Escape') this.closeSettings();
+    },
+
+    closeSettings() {
+      this.$emit('close');
     },
   },
 };

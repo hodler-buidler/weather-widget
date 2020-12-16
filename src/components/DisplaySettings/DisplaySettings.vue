@@ -24,7 +24,10 @@ export default {
       :is-active="!isSettingsVisible"
       @click.native="switchSettingsVisibility"
     />
-    <display-settings-content :is-active="isSettingsVisible" />
+    <display-settings-content
+      :is-active="isSettingsVisible"
+      @close="isSettingsVisible = false"
+    />
   </div>
 </template>
 
