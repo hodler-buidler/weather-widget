@@ -17,8 +17,10 @@ After that, you can use ```<weather-widget></weather-widget>``` at your HTML as 
 
 1) **theme** (string) - accepts two values: *default* and *dark*. Default theme - is light theme which is displayed as initial.
 2) **lang** (string) - accepts two values currently: *en* and *ru*. This is would display widget data on your language. en - default.
-3) **instanceId** (string) - if you want to add multiple instances of widgets at page, you may want to set value to this attribute to make storage usage separate.
-4) **units** (string) - accepts three values: *standart*, *metric*, *imperial*. Responsible for how units of measurment would be displayed. Default: metric.
+3) **units** (string) - accepts three values: *standart*, *metric*, *imperial*. Responsible for how units of measurment would be displayed. Default: metric.
+
+**NEEDS DEVELOPMENT to complete**
+4) **instanceId** (string) - if you want to add multiple instances of widgets at page, you may want to set value to this attribute to make storage usage separate.
 
 ## How to set-up development?
 1) ```git clone https://github.com/NikitosGolubev/weather-widget.git```
