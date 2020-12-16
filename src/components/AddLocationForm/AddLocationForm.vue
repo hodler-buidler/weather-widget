@@ -66,7 +66,9 @@ export default {
           v-model.trim="form.city"
           trim-spaces
           class="location-field"
-          placeholder="Your City"
+          :placeholder="
+            $t('settingsForm.placeholders.addLocation') | capFirstLetter
+          "
           :theme="$stylingTheme"
           :disabled="isLoading"
         />

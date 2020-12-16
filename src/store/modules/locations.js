@@ -57,10 +57,26 @@ const weather = {
       dispatch('addLocation', location);
     },
 
+    setLocations({ commit, state }, locationsArray) {
+      if (locationsArray.length) {
+        commit('SET_LOCATIONS', locationsArray);
+        state.LocationsCache.setAll(locationsArray);
+      }
+    },
+
     addLocation({ commit, state }, location) {
       commit('ADD_LOCATION', location);
       if (state.locations.length) {
         state.LocationsCache.setAll(state.locations);
+      }
+    },
+
+    removeLocation({ commit, state }, location) {
+      commit('REMOVE_LOCATION', location);
+      if (state.locations.length) {
+        state.LocationsCache.setAll(state.locations);
+      } else {
+        state.LocationsCache.clear();
       }
     },
 
@@ -74,15 +90,6 @@ const weather = {
       const DuplicateError = { isDuplicate: true };
       if (isDuplicateLocation(location, state.locations)) throw DuplicateError;
       else dispatch('addLocation', location);
-    },
-
-    removeLocation({ commit, state }, location) {
-      commit('REMOVE_LOCATION', location);
-      if (state.locations.length) {
-        state.LocationsCache.setAll(state.locations);
-      } else {
-        state.LocationsCache.clear();
-      }
     },
   },
 };

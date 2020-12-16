@@ -12,6 +12,16 @@ export default {
       type: Boolean,
       default: true,
     },
+
+    withHandle: {
+      type: Boolean,
+      default: false,
+    },
+
+    handleClass: {
+      type: String,
+      default: 'js-handle',
+    },
   },
 
   methods: {
@@ -27,7 +37,12 @@ export default {
 <template>
   <div class="location" :class="$stylingTheme">
     <div class="location__left">
-      <ui-icon class="location__burger" name="menu" />
+      <ui-icon
+        v-if="withHandle"
+        class="handle location__burger"
+        :class="handleClass"
+        name="menu"
+      />
       <div>
         {{ location.city | capitalize }}
       </div>
@@ -73,5 +88,9 @@ export default {
 
 .i-delete {
   color: $red;
+}
+
+.handle {
+  cursor: move;
 }
 </style>

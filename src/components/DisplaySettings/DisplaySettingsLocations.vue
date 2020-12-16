@@ -15,7 +15,7 @@ export default {
         return this.locations;
       },
       set(value) {
-        console.log(value);
+        this.setLocations(value);
       },
     },
 
@@ -25,7 +25,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('locations', ['removeLocation']),
+    ...mapActions('locations', ['removeLocation', 'setLocations']),
   },
 };
 </script>
@@ -35,6 +35,7 @@ export default {
     v-model="locationsList"
     class="locations"
     :class="$stylingTheme"
+    handle=".js-handle"
   >
     <location-display
       v-for="item in locations"
@@ -42,6 +43,8 @@ export default {
       :location="item"
       class="locations__item"
       :removable="!isLastLocation"
+      with-handle
+      handle-class="js-handle"
       @remove="removeLocation"
     />
   </vue-draggable>

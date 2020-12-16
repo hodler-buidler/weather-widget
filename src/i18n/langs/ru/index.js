@@ -9,6 +9,9 @@ const translations = {
     labels: {
       addLocation: 'добавить место',
     },
+    placeholders: {
+      addLocation: 'ваш город',
+    },
   },
   errors: {
     dataNotLoadedForCity: `произошла какая-то ошибка, данные не могут быть загружены для города`,
