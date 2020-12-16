@@ -1,11 +1,36 @@
 <script>
 export default {
   name: 'AddLocationForm',
+
+  data: () => ({
+    form: {
+      city: '',
+    },
+  }),
+
+  methods: {
+    onSubmit(e) {
+      e.preventDefault();
+      if (this.validate()) {
+        this.$emit('submit', this.form);
+      }
+    },
+
+    validate() {
+      /** Add validation here when it would be necessary */
+      return true;
+    },
+  },
 };
 </script>
 
 <template>
-  <form name="AddLocationForm" :class="$stylingTheme">
+  <form
+    ref="form"
+    name="AddLocationForm"
+    :class="$stylingTheme"
+    @submit="onSubmit"
+  >
     <div class="field">
       <div class="field__label">
         <span class="label">
@@ -15,13 +40,15 @@ export default {
 
       <div class="location-field-wrapper">
         <ui-text-field
+          v-model.trim="form.city"
+          trim-spaces
           class="location-field"
           placeholder="Your City"
           :theme="$stylingTheme"
         />
-        <div>
+        <button type="submit" class="submit-btn">
           <ui-icon name="subdirectory_arrow_left" clickable />
-        </div>
+        </button>
       </div>
     </div>
   </form>
@@ -47,5 +74,12 @@ export default {
 
 .label {
   @extend %main-font-medium;
+}
+
+.submit-btn {
+  color: inherit;
+  background: none;
+  border: none;
+  padding: none;
 }
 </style>

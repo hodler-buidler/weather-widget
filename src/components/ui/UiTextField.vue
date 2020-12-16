@@ -1,17 +1,58 @@
 <script>
+import trimSpaces from '@/utils/trimSpaces';
+
 export default {
   name: 'UiTextField',
 
   props: {
+    value: {
+      type: [String, Number],
+      default: '',
+    },
+
     theme: {
       type: String,
       default: '',
     },
+
+    trimSpaces: {
+      type: Boolean,
+      default: false,
+    },
   },
+
+  data: () => ({
+    inputValue: '',
+  }),
 
   computed: {
     defaultStylingClass() {
       return 'default-styling';
+    },
+  },
+
+  watch: {
+    inputValue(newValue) {
+      if (newValue !== this.value) {
+        this.$emit('input', newValue);
+      }
+    },
+
+    value: {
+      handler(newValue) {
+        if (newValue !== this.inputValue) {
+          this.inputValue = newValue;
+        }
+      },
+      immediate: true,
+    },
+  },
+
+  methods: {
+    updateValue(event) {
+      let result = event.target.value;
+      if (this.trimSpaces) result = trimSpaces(result);
+      this.inputValue = result;
     },
   },
 };
@@ -19,7 +60,13 @@ export default {
 
 <template>
   <div class="ui-text-field" :class="theme">
-    <input v-bind="$attrs" class="field" :class="[defaultStylingClass]" />
+    <input
+      v-model="inputValue"
+      v-bind="$attrs"
+      class="field"
+      :class="[defaultStylingClass]"
+      @input="updateValue"
+    />
   </div>
 </template>
 
