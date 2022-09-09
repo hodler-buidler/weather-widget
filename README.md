@@ -19,7 +19,6 @@ After that, you can use ```<weather-widget></weather-widget>``` at your HTML as 
 4) **instanceId** (string) - if you want to add multiple instances of widgets at page, you may want to set value to this attribute to make storage usage separate.
 
 ## How to set-up development?
-1) ```git clone https://github.com/NikitosGolubev/weather-widget.git```
 2) Install dependencies with: ```yarn```
 3) Run in dev mode: ```yarn serve```
 
